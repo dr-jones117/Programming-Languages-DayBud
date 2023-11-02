@@ -9,32 +9,37 @@ import SwiftUI
 
 struct ToDoListView: View {
     
-    @State var tasks: [String] = [
-        "Task 1",
-        "Task 2",
-        "Task 3"
-    ]
+    @EnvironmentObject var toDoListViewModel: ToDoListViewModel
     
     @State var textFieldText: String = ""
     
     var body: some View {
         VStack {
             List{
-                ForEach(tasks, id: \.self) { task in
-                    ToDoRowView(title: task)
+                ForEach(toDoListViewModel.tasks) { task in
+                    ToDoRowView(task: task)
+                        .onTapGesture {
+                            toDoListViewModel.toggleTaskCompleted(task)
+                        }
                 }
+                .onDelete(perform: toDoListViewModel.deleteTask)
+                .onMove(perform: toDoListViewModel.moveTask)
             }
             .listStyle(PlainListStyle())
             
             HStack {
-                TextField("Add a task", text: $textFieldText)
+                TextField("Add a task", text: $textFieldText, onCommit: {
+                    toDoListViewModel.addTask(TaskModel(title: textFieldText, isCompleted: false))
+                    textFieldText = ""
+                })
                     .padding(.horizontal)
                     .frame(height: 55)
                     .background(Color(red: 0.95, green: 0.95, blue: 0.95))
                     .cornerRadius(10)
                 
                 Button(action: {
-                    
+                    toDoListViewModel.addTask(TaskModel(title: textFieldText, isCompleted: false))
+                    textFieldText = ""
                 }, label: {
                     Text("Add")
                         .foregroundColor(.white)
@@ -48,6 +53,7 @@ struct ToDoListView: View {
                 
         }
         .navigationTitle("To Do List ✍🏻")
+        .navigationBarItems(leading: EditButton())
         .padding()
     }
 }
@@ -56,6 +62,7 @@ struct ToDoListView: View {
     NavigationView {
         ToDoListView()
     }
+    .environmentObject(ToDoListViewModel())
 }
 
 

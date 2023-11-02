@@ -9,17 +9,26 @@ import SwiftUI
 
 struct ToDoRowView: View {
     
-    let title: String
+    @ObservedObject var task: TaskModel
     
     var body: some View {
         HStack {
-            Image(systemName: "checkmark.circle")
-            Text(title)
+            Image(systemName: task.isCompleted ? "checkmark.circle" : "circle")
+                .foregroundColor(task.isCompleted ? Color.green : Color.blue)
+                .font(.title)
+            Text(task.title)
             Spacer()
         }
+        .padding(.vertical, 3)
     }
 }
 
 #Preview {
-    ToDoRowView(title: "First task!!!")
+    Group {
+        ToDoRowView(task: TaskModel(title: "Test", isCompleted: false))
+        ToDoRowView(task: TaskModel(title: "Test 2", isCompleted: false))
+        ToDoRowView(task: TaskModel(title: "Test 3", isCompleted: true))
+
+    }
+    .previewLayout(.sizeThatFits)
 }
