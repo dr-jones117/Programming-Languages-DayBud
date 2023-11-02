@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ADBB91A82AF349B50005B06F /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB91A72AF349B50005B06F /* ToDoListView.swift */; };
+		ADBB91AA2AF34B0C0005B06F /* ToDoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB91A92AF34B0C0005B06F /* ToDoRowView.swift */; };
 		ADD262532AE22AC30098ABF3 /* DayBudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD262522AE22AC30098ABF3 /* DayBudApp.swift */; };
-		ADD262552AE22AC30098ABF3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD262542AE22AC30098ABF3 /* ContentView.swift */; };
 		ADD262572AE22AC70098ABF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADD262562AE22AC70098ABF3 /* Assets.xcassets */; };
 		ADD2625B2AE22AC70098ABF3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADD2625A2AE22AC70098ABF3 /* Preview Assets.xcassets */; };
 		ADD262652AE22AC70098ABF3 /* DayBudTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD262642AE22AC70098ABF3 /* DayBudTests.swift */; };
@@ -34,9 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ADBB91A72AF349B50005B06F /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
+		ADBB91A92AF34B0C0005B06F /* ToDoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoRowView.swift; sourceTree = "<group>"; };
 		ADD2624F2AE22AC30098ABF3 /* DayBud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayBud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADD262522AE22AC30098ABF3 /* DayBudApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayBudApp.swift; sourceTree = "<group>"; };
-		ADD262542AE22AC30098ABF3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ADD262562AE22AC70098ABF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADD262582AE22AC70098ABF3 /* DayBud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DayBud.entitlements; sourceTree = "<group>"; };
 		ADD2625A2AE22AC70098ABF3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -72,6 +74,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ADBB91A62AF349A00005B06F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ADBB91A72AF349B50005B06F /* ToDoListView.swift */,
+				ADBB91A92AF34B0C0005B06F /* ToDoRowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		ADD262462AE22AC30098ABF3 = {
 			isa = PBXGroup;
 			children = (
@@ -95,8 +106,8 @@
 		ADD262512AE22AC30098ABF3 /* DayBud */ = {
 			isa = PBXGroup;
 			children = (
+				ADBB91A62AF349A00005B06F /* Views */,
 				ADD262522AE22AC30098ABF3 /* DayBudApp.swift */,
-				ADD262542AE22AC30098ABF3 /* ContentView.swift */,
 				ADD262562AE22AC70098ABF3 /* Assets.xcassets */,
 				ADD262582AE22AC70098ABF3 /* DayBud.entitlements */,
 				ADD262592AE22AC70098ABF3 /* Preview Content */,
@@ -259,8 +270,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADD262552AE22AC30098ABF3 /* ContentView.swift in Sources */,
+				ADBB91A82AF349B50005B06F /* ToDoListView.swift in Sources */,
 				ADD262532AE22AC30098ABF3 /* DayBudApp.swift in Sources */,
+				ADBB91AA2AF34B0C0005B06F /* ToDoRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,9 @@ import SwiftUI
 struct DayBudApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView{
+                ToDoListView()
+            }
         }
     }
 }
