@@ -14,6 +14,7 @@
 		ADD262652AE22AC70098ABF3 /* DayBudTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD262642AE22AC70098ABF3 /* DayBudTests.swift */; };
 		ADD2626F2AE22AC70098ABF3 /* DayBudUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD2626E2AE22AC70098ABF3 /* DayBudUITests.swift */; };
 		ADD262712AE22AC70098ABF3 /* DayBudUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD262702AE22AC70098ABF3 /* DayBudUITestsLaunchTests.swift */; };
+		D7CE82682AF470F40061A18F /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CE82672AF470F40061A18F /* DayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		ADD2626A2AE22AC70098ABF3 /* DayBudUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DayBudUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADD2626E2AE22AC70098ABF3 /* DayBudUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayBudUITests.swift; sourceTree = "<group>"; };
 		ADD262702AE22AC70098ABF3 /* DayBudUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayBudUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D7CE82672AF470F40061A18F /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				ADD262522AE22AC30098ABF3 /* DayBudApp.swift */,
 				ADD262542AE22AC30098ABF3 /* ContentView.swift */,
+				D7CE82672AF470F40061A18F /* DayView.swift */,
 				ADD262562AE22AC70098ABF3 /* Assets.xcassets */,
 				ADD262582AE22AC70098ABF3 /* DayBud.entitlements */,
 				ADD262592AE22AC70098ABF3 /* Preview Content */,
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADD262552AE22AC30098ABF3 /* ContentView.swift in Sources */,
+				D7CE82682AF470F40061A18F /* DayView.swift in Sources */,
 				ADD262532AE22AC30098ABF3 /* DayBudApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
