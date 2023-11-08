@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct DayBudApp: App {
+    
+    @StateObject var toDoListViewModel: ToDoListViewModel = ToDoListViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView{
+                ToDoListView()
+            }
+            .environmentObject(toDoListViewModel)
         }
     }
 }
