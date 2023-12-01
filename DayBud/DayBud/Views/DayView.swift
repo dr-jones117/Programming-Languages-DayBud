@@ -46,15 +46,15 @@ struct DayView: View {
             
             NavigationLink(destination: ContentView()) {
                 HStack(spacing: 8) {
-                    Text("Weather Preview")
+                    Text("Weather App")
                         .font(.headline)
                         .foregroundColor(.primary)
                     
                     Image(systemName: "sun.max.fill")
-                        .foregroundColor(.orange)
+                        .foregroundColor(.orange).scaledToFill()
                 }
                 .padding()
-                .frame(width: 300, height: 120) // Adjust height for more content
+                .frame(width: 300, height: 100) // Adjust height for more content
                 .background(Color(.systemBackground))
                 .cornerRadius(10)
                 .shadow(radius: 5)
