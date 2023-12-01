@@ -5,7 +5,7 @@ class DayViewModel: ObservableObject {
     @Published var date: Date
     @Published var quoteText: String = "\"You are what you eat...\""
     @Published var toDoList = ToDoListViewModel()
-    @Published var weatherInfo: String = ""
+    @Published var weatherInfo: String = "Weather App Goes Below"
     
     
     
