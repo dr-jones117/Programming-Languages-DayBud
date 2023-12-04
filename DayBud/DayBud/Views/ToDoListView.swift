@@ -28,13 +28,9 @@ struct ToDoListView: View {
             .listStyle(PlainListStyle())
             
             HStack {
-                TextField("Add a task", text: $textFieldText, onCommit: {
-                    toDoListViewModel.addTask(TaskModel(title: textFieldText, isCompleted: false))
-                    textFieldText = ""
-                })
+                TextField("Add a task", text: $textFieldText)
                     .padding(.horizontal)
                     .frame(height: 55)
-                    .background(Color(red: 0.95, green: 0.95, blue: 0.95))
                     .cornerRadius(10)
                 
                 Button(action: {
@@ -52,8 +48,8 @@ struct ToDoListView: View {
             
                 
         }
-        .navigationTitle("To Do List ✍🏻")
-        .navigationBarItems(leading: EditButton())
+        .navigationTitle("To Do List")
+        .navigationBarItems(trailing: EditButton())
         .padding()
     }
 }

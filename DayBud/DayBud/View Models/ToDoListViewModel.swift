@@ -32,6 +32,9 @@ class ToDoListViewModel: ObservableObject {
     }
     
     func addTask(_ task: TaskModel){
+        if(task.title == "") {
+            return
+        }
         tasks.append(task)
     }
     

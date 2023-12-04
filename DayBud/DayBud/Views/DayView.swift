@@ -13,7 +13,7 @@ struct DayView: View {
             
             NavigationLink(destination: ToDoListView().environmentObject(dayViewModel.toDoList)) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("TO-DO List Preview")
+                    Text("To Do List For Today")
                         .font(.headline)
                         .foregroundColor(.primary)
                     
@@ -46,7 +46,7 @@ struct DayView: View {
             
             NavigationLink(destination: ContentView()) {
                 HStack(spacing: 8) {
-                    Text("Weather App")
+                    Text("Weather")
                         .font(.headline)
                         .foregroundColor(.primary)
                     
