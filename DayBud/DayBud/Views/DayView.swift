@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct DayView: View {
     @EnvironmentObject var dayViewModel: DayViewModel
@@ -9,10 +10,13 @@ struct DayView: View {
     
     var body: some View {
         VStack {
-            Text("Date: \(dayViewModel.date, formatter: dateFormatter)")
-                .padding()
-                .font(.title)
-                .bold()
+            Text("\(dayViewModel.date, formatter: dateFormatter)").font(.largeTitle)
+
+                .foregroundStyle(Color.white)
+            
+            Spacer()
+            
+            CalendarView()
             
             Spacer()
             
@@ -20,7 +24,7 @@ struct DayView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("To Do List For Today")
                         .font(.headline)
-                        .foregroundColor(.primary)
+                        .foregroundColor(Color.white)
                     
                     // Display a preview of the to-do list items
                     ForEach(dayViewModel.toDoList.tasks.prefix(3)) { task in // Only show up to 3 tasks for preview
@@ -29,7 +33,7 @@ struct DayView: View {
                                 .foregroundColor(task.isCompleted ? .green : .red)
                             Text(task.title)
                                 .strikethrough(task.isCompleted)
-                                .foregroundColor(.secondary)
+                                .foregroundStyle(Color.white)
                                 .lineLimit(1)
                         }
                     }
@@ -37,7 +41,7 @@ struct DayView: View {
                     if dayViewModel.toDoList.tasks.count > 3 {
                         Text("...and more")
                             .font(.caption)
-                            .foregroundColor(.secondary)
+                            .foregroundStyle(Color.white)
                     }
                 }
                 .padding()
@@ -57,7 +61,7 @@ struct DayView: View {
                 HStack(spacing: 8) {
                     Text("Weather")
                         .font(.headline)
-                        .foregroundColor(.primary)
+                        .foregroundStyle(Color.white)
                     
                     Image(systemName: "sun.max.fill")
                         .foregroundColor(.orange).scaledToFill()
@@ -76,6 +80,7 @@ struct DayView: View {
                             )
             .padding(20)
         }
+        .background(Color.blue)
     }
 }
 
