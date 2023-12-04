@@ -13,5 +13,4 @@ class DayViewModel: ObservableObject {
         self.date = date
         self.toDoList = ToDoListViewModel()
     }
-    
 }

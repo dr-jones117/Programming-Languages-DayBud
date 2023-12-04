@@ -98,7 +98,7 @@ struct WeatherView: View {
             }
             .edgesIgnoringSafeArea(.bottom)
             .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354))
-            .preferredColorScheme(.dark)
+            .colorScheme(.dark)
         }
         
     }

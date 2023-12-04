@@ -13,14 +13,28 @@ struct ToDoListView: View {
     
     @State var textFieldText: String = ""
     
+    let backColor = Color(
+        red: Double(0x13) / 255.0,
+        green: Double(0x18) / 255.0,
+        blue: Double(0x4B) / 255.0
+    )
+    
+    init(){
+        
+    }
+    
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
+            Text("To Do List")
+                .font(.largeTitle)
+                .bold()
+            
             List{
                 ForEach(toDoListViewModel.tasks) { task in
                     ToDoRowView(task: task)
                         .onTapGesture {
                             toDoListViewModel.toggleTaskCompleted(task)
-                        }
+                        }.listRowBackground(backColor)
                 }
                 .onDelete(perform: toDoListViewModel.deleteTask)
                 .onMove(perform: toDoListViewModel.moveTask)
@@ -48,9 +62,11 @@ struct ToDoListView: View {
             
                 
         }
-        .navigationTitle("To Do List")
+        .foregroundColor(Color.white)
         .navigationBarItems(trailing: EditButton())
         .padding()
+        .background(backColor)
+        .colorScheme(.dark)
     }
 }
 

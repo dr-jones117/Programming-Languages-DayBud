@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AD05B4412B1E5ED800268201 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD05B4402B1E5ED800268201 /* CalendarView.swift */; };
 		ADBB91A82AF349B50005B06F /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB91A72AF349B50005B06F /* ToDoListView.swift */; };
 		ADBB91AA2AF34B0C0005B06F /* ToDoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB91A92AF34B0C0005B06F /* ToDoRowView.swift */; };
 		ADBB91AD2AF3521A0005B06F /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB91AC2AF3521A0005B06F /* TaskModel.swift */; };
@@ -50,7 +49,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AD05B4402B1E5ED800268201 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		ADBB91A72AF349B50005B06F /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
 		ADBB91A92AF34B0C0005B06F /* ToDoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoRowView.swift; sourceTree = "<group>"; };
 		ADBB91AC2AF3521A0005B06F /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 				D7CE82672AF470F40061A18F /* DayView.swift */,
 				ADBB91A72AF349B50005B06F /* ToDoListView.swift */,
 				ADBB91A92AF34B0C0005B06F /* ToDoRowView.swift */,
-				AD05B4402B1E5ED800268201 /* CalendarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -351,7 +348,6 @@
 				EA27EA4A2B19A2D800C2E028 /* WeatherRow.swift in Sources */,
 				EA27EA412B19A12500C2E028 /* WeatherView.swift in Sources */,
 				D7CE82682AF470F40061A18F /* DayView.swift in Sources */,
-				AD05B4412B1E5ED800268201 /* CalendarView.swift in Sources */,
 				ADBB91A82AF349B50005B06F /* ToDoListView.swift in Sources */,
 				ADD262532AE22AC30098ABF3 /* DayBudApp.swift in Sources */,
 				EA27EA542B19A37900C2E028 /* ModelData.swift in Sources */,

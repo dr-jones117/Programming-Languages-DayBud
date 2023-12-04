@@ -4,19 +4,27 @@ import UIKit
 struct DayView: View {
     @EnvironmentObject var dayViewModel: DayViewModel
     
+    let backColor = Color(
+        red: Double(0x13) / 255.0,
+        green: Double(0x18) / 255.0,
+        blue: Double(0x5A) / 255.0
+    )
+    
     init(){
         
     }
     
     var body: some View {
         VStack {
-            Text("\(dayViewModel.date, formatter: dateFormatter)").font(.largeTitle)
+            Text("DayBud")
+                .font(.largeTitle)
+                .bold()
+                .padding()
 
-                .foregroundStyle(Color.white)
-            
-            Spacer()
-            
-            CalendarView()
+            DatePicker("Select a date", selection: $dayViewModel.date, in: ...Date(), displayedComponents: .date)
+                .datePickerStyle(GraphicalDatePickerStyle())
+                .padding()
+                .colorScheme(.dark)
             
             Spacer()
             
@@ -24,7 +32,6 @@ struct DayView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("To Do List For Today")
                         .font(.headline)
-                        .foregroundColor(Color.white)
                     
                     // Display a preview of the to-do list items
                     ForEach(dayViewModel.toDoList.tasks.prefix(3)) { task in // Only show up to 3 tasks for preview
@@ -33,7 +40,6 @@ struct DayView: View {
                                 .foregroundColor(task.isCompleted ? .green : .red)
                             Text(task.title)
                                 .strikethrough(task.isCompleted)
-                                .foregroundStyle(Color.white)
                                 .lineLimit(1)
                         }
                     }
@@ -41,46 +47,36 @@ struct DayView: View {
                     if dayViewModel.toDoList.tasks.count > 3 {
                         Text("...and more")
                             .font(.caption)
-                            .foregroundStyle(Color.white)
                     }
                 }
                 .padding()
                 .frame(width: 300, height: 100)
-                .background(Color.blue)
+                .background(Color(red: 0, green: 0, blue: 0.9))
                 .cornerRadius(10)
                 .shadow(radius: 5)
             }
             .buttonStyle(PlainButtonStyle())
-            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.blue, lineWidth: 2)
-                            )
-            
                         
             NavigationLink(destination: ContentView()) {
                 HStack(spacing: 8) {
                     Text("Weather")
                         .font(.headline)
-                        .foregroundStyle(Color.white)
                     
                     Image(systemName: "sun.max.fill")
                         .foregroundColor(.orange).scaledToFill()
                 }
                 .padding()
                 .frame(width: 300, height: 100) // Adjust height for more content
-                .background(Color.blue)
+                .background(Color(red: 0, green: 0, blue: 0.9))
                 .cornerRadius(10)
                 .shadow(radius: 5)
                 
             }
             .buttonStyle(PlainButtonStyle())
-            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.blue, lineWidth: 2)
-                            )
-            .padding(20)
+            .padding()
         }
-        .background(Color.blue)
+        .background(backColor)
+        .colorScheme(.dark)
     }
 }
 
