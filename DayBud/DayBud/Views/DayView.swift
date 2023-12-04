@@ -72,8 +72,14 @@ private let dateFormatter: DateFormatter = {
     return formatter
 }()
 
+
 struct DayView_Previews: PreviewProvider {
     static var previews: some View {
-        DayView()
+        let model = DayViewModel(date: Date(timeIntervalSinceReferenceDate: 0))
+        
+        NavigationView {
+            DayView()
+                .environmentObject(model)
+        }
     }
 }
