@@ -10,6 +10,11 @@ struct DayView: View {
     var body: some View {
         VStack {
             Text("Date: \(dayViewModel.date, formatter: dateFormatter)")
+                .padding()
+                .font(.title)
+                .bold()
+            
+            Spacer()
             
             NavigationLink(destination: ToDoListView().environmentObject(dayViewModel.toDoList)) {
                 VStack(alignment: .leading, spacing: 4) {
@@ -42,6 +47,10 @@ struct DayView: View {
                 .shadow(radius: 5)
             }
             .buttonStyle(PlainButtonStyle())
+            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.blue, lineWidth: 2)
+                            )
             
             
             NavigationLink(destination: ContentView()) {
@@ -61,6 +70,12 @@ struct DayView: View {
                 
             }
             .buttonStyle(PlainButtonStyle())
+            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.blue, lineWidth: 2)
+                            )
+            
+            Spacer()
         }
     }
 }
