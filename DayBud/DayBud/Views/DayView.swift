@@ -42,7 +42,7 @@ struct DayView: View {
                 }
                 .padding()
                 .frame(width: 300, height: 100)
-                .background(Color(.systemBackground))
+                .background(Color.blue)
                 .cornerRadius(10)
                 .shadow(radius: 5)
             }
@@ -52,7 +52,7 @@ struct DayView: View {
                                     .stroke(Color.blue, lineWidth: 2)
                             )
             
-            
+                        
             NavigationLink(destination: ContentView()) {
                 HStack(spacing: 8) {
                     Text("Weather")
@@ -64,7 +64,7 @@ struct DayView: View {
                 }
                 .padding()
                 .frame(width: 300, height: 100) // Adjust height for more content
-                .background(Color(.systemBackground))
+                .background(Color.blue)
                 .cornerRadius(10)
                 .shadow(radius: 5)
                 
@@ -74,8 +74,7 @@ struct DayView: View {
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color.blue, lineWidth: 2)
                             )
-            
-            Spacer()
+            .padding(20)
         }
     }
 }
