@@ -24,10 +24,11 @@ struct ContentView: View {
                 else {
                     LoadingView()
                         .task {
+                            // try catch block to see if we can get weather from the manager
                             do {
                                 weather = try await weatherManager.getCurrentWeather(latitude: location.latitude, longitude: location.longitude)
                             }
-                            
+                            // in case of error
                             catch {
                                 print("Error getting weather: \(error)")
                             }
@@ -35,9 +36,11 @@ struct ContentView: View {
                 }
             }
              else {
+                // while we are loading, display the loading page
                 if locationManager.isLoading {
                     LoadingView()
                 }
+                 // display the welcome page otherwise
                 else {
                     WelcomeView()
                         .environmentObject(locationManager)
