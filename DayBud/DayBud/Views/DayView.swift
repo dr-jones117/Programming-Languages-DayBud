@@ -3,6 +3,9 @@ import UIKit
 
 struct DayView: View {
     @EnvironmentObject var dayViewModel: DayViewModel
+    @StateObject var locationManager = LocationManager()
+    var weatherManager = WeatherManager()
+    @State var weather: ResponseBody?
     
     let backColor = Color(
         red: Double(0x13) / 255.0,
@@ -64,6 +67,8 @@ struct DayView: View {
                     
                     Image(systemName: "sun.max.fill")
                         .foregroundColor(.orange).scaledToFill()
+                    
+                    
                 }
                 .padding()
                 .frame(width: 300, height: 100) // Adjust height for more content
