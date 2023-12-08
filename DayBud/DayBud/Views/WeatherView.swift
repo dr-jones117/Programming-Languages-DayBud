@@ -10,6 +10,23 @@ import SwiftUI
 struct WeatherView: View {
     var weather :ResponseBody
 
+    // Helper function to determine the weather icon based on feelsLikeTemperature
+    private func determineWeatherIcon() -> String {
+        switch weather.main.feels_like {
+        case ..<0:
+            return "thermometer.snowflake"
+        case 0..<10:
+            return "thermometer.low"
+        case 10..<20:
+            return "thermometer.medium"
+        case 20..<30:
+            return "thermometer.high"
+        default:
+            return "sun.max"
+        }
+    }
+
+
     var body: some View {
             ZStack(alignment: .leading) {
                 VStack {
@@ -27,8 +44,8 @@ struct WeatherView: View {
                     VStack {
                         HStack {
                             VStack (spacing: 20){
-                                Image(systemName: "sun.max")
-                                    .font(.system(size: 40))
+                                Image(systemName: determineWeatherIcon())
+                                                .font(.system(size: 40))
                                 
                                 Text(weather.weather[0].main)
                             }
@@ -102,3 +119,4 @@ struct WeatherView: View {
 #Preview {
     WeatherView(weather: previewWeather)
 }
+
