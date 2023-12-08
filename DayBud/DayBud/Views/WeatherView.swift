@@ -45,15 +45,11 @@ struct WeatherView: View {
                         Spacer()
                             .frame(height: 40)
                         
-                        AsyncImage(url: URL(string: "https://cdn.pixabay.com/photo/2018/03/02/17/19/paris-3193674_1280.jpg")) {
-                            image in image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 350)
-                            
-                        } placeholder: {
-                            ProgressView()
-                        }
+                        Image("rapidcity")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 350)
+
                         
                         Spacer()
                     }

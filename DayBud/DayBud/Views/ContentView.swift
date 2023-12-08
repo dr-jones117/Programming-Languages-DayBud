@@ -7,51 +7,54 @@
 
 import SwiftUI
 
+// Define the ContentView SwiftUI view
 struct ContentView: View {
+    // Create a StateObject for LocationManager to manage location updates
     @StateObject var locationManager = LocationManager()
+    
+    // Create an instance of WeatherManager to fetch weather data
     var weatherManager = WeatherManager()
+    
+    // State variable to hold weather data received from the API
     @State var weather: ResponseBody?
     
     var body: some View {
         VStack {
-            
-            // if we have a location display it
+            // Check if we have a location
             if let location = locationManager.location {
+                // Check if weather data is available
                 if let weather = weather {
                     WeatherView(weather: weather)
-                }
-                
-                else {
+                } else {
+                    // Display a loading view while fetching weather data
                     LoadingView()
                         .task {
-                            // try catch block to see if we can get weather from the manager
+                            // Use async/await to fetch weather data
                             do {
                                 weather = try await weatherManager.getCurrentWeather(latitude: location.latitude, longitude: location.longitude)
-                            }
-                            // in case of error
-                            catch {
+                            } catch {
                                 print("Error getting weather: \(error)")
                             }
                         }
                 }
-            }
-             else {
-                // while we are loading, display the loading page
+            } else {
+                // While loading, display the loading page
                 if locationManager.isLoading {
                     LoadingView()
-                }
-                 // display the welcome page otherwise
-                else {
+                } else {
+                    // Display the welcome page when no location is available
                     WelcomeView()
                         .environmentObject(locationManager)
                 }
-             }
+            }
         }
+        // Set the background color and color scheme for the entire view
         .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354))
         .colorScheme(.dark)
     }
 }
 
+// Provide a preview for the ContentView
 #Preview {
     ContentView()
 }
