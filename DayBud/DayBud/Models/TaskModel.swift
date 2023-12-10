@@ -7,10 +7,10 @@
 
 import Foundation
 
-class TaskModel: Identifiable, ObservableObject {
+class TaskModel: Identifiable, ObservableObject, Codable {
     let id: String = UUID().uuidString
     var title: String
-    @Published var isCompleted: Bool
+    var isCompleted: Bool
     
     init(title: String, isCompleted: Bool) {
         self.title = title

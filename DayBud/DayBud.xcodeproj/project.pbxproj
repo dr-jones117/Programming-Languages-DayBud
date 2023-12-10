@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5DA6BE072B23A16200B6ABEA /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA6BE062B23A16200B6ABEA /* TaskStore.swift */; };
 		ADBB91A82AF349B50005B06F /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB91A72AF349B50005B06F /* ToDoListView.swift */; };
 		ADBB91AA2AF34B0C0005B06F /* ToDoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB91A92AF34B0C0005B06F /* ToDoRowView.swift */; };
 		ADBB91AD2AF3521A0005B06F /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBB91AC2AF3521A0005B06F /* TaskModel.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5DA6BE062B23A16200B6ABEA /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
 		ADBB91A72AF349B50005B06F /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
 		ADBB91A92AF34B0C0005B06F /* ToDoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoRowView.swift; sourceTree = "<group>"; };
 		ADBB91AC2AF3521A0005B06F /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				ADBB91AC2AF3521A0005B06F /* TaskModel.swift */,
+				5DA6BE062B23A16200B6ABEA /* TaskStore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				EA27EA402B19A12500C2E028 /* LoadingView.swift in Sources */,
 				ADBB91AD2AF3521A0005B06F /* TaskModel.swift in Sources */,
 				EA27EA392B19A0E400C2E028 /* LocationManager.swift in Sources */,
+				5DA6BE072B23A16200B6ABEA /* TaskStore.swift in Sources */,
 				EA27EA422B19A12500C2E028 /* WelcomeView.swift in Sources */,
 				ADBB91AA2AF34B0C0005B06F /* ToDoRowView.swift in Sources */,
 				EA27EA3B2B19A0EB00C2E028 /* WeatherManager.swift in Sources */,
