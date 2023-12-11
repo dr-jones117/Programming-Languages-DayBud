@@ -33,11 +33,15 @@ struct WeatherView: View {
                     VStack(alignment: .leading, spacing: 5) {
                         Text(weather.name)
                             .bold().font(.title)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Make the text take the full width and align it to the leading edge
+                            .multilineTextAlignment(.leading)
                         
-                        Text("Today, \(Date().formatted(.dateTime.month().day().hour().minute()))")
+                        Text("\(Date().formatted(.dateTime.month().day().hour().minute()))")
                             .fontWeight(.light)
+                            .multilineTextAlignment(.leading) // Align the text to the leading edge
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
+
                     
                     Spacer()
                     
@@ -65,7 +69,7 @@ struct WeatherView: View {
                         Image("rapidcity")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 350)
+                            .frame(width: 400)
 
                         
                         Spacer()
@@ -81,19 +85,23 @@ struct WeatherView: View {
                 
                     VStack(alignment: .leading, spacing: 20) {
                         Text("Weather now").bold()
-                            .padding((.bottom))
+                                                    .padding((.bottom))
+                        
                         HStack {
                             WeatherRow(logo: "thermometer.low", name: "Min temp",
                                        value: (weather.main.tempMin.roundDouble() + "°"))
+                            .padding(.leading, 20)
                             
                             Spacer()
                             WeatherRow(logo: "thermometer.low", name: "Max temp",
                                        value: (weather.main.tempMax.roundDouble() + "°"))
                             .padding(.trailing, 20)
                         }
+                        
                         HStack {
                             WeatherRow(logo: "wind", name: "Wind Speed",
                                        value: (weather.wind.speed.roundDouble() + "m/s"))
+                            .padding(.leading, 20)
                             
                             Spacer()
                             WeatherRow(logo: "humidity", name: "Humidity",
