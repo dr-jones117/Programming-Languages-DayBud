@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ToDoListView: View {
-    
+    @EnvironmentObject var dayViewModel: DayViewModel
     @EnvironmentObject var toDoListViewModel: ToDoListViewModel
+    
+    @Binding var selectedDate: Date
     
     @State var textFieldText: String = ""
     
@@ -19,8 +21,8 @@ struct ToDoListView: View {
         blue: Double(0x4B) / 255.0
     )
     
-    init(){
-        
+    init(selectedDate: Binding<Date>) {
+        self._selectedDate = selectedDate
     }
     
     var body: some View {
@@ -29,15 +31,19 @@ struct ToDoListView: View {
                 .font(.largeTitle)
                 .bold()
             
-            List{
-                ForEach(toDoListViewModel.tasks) { task in
+            List {
+                ForEach(toDoListViewModel.tasksForDate(selectedDate) ) { task in
                     ToDoRowView(task: task)
                         .onTapGesture {
                             toDoListViewModel.toggleTaskCompleted(task)
                         }.listRowBackground(backColor)
                 }
-                .onDelete(perform: toDoListViewModel.deleteTask)
-                .onMove(perform: toDoListViewModel.moveTask)
+                .onDelete { offsets in
+                    toDoListViewModel.deleteTask(date: selectedDate, indexSet: offsets)
+                }
+                .onMove { source, destination in
+                    toDoListViewModel.moveTask(date: selectedDate, form: source, to: destination)
+                }
             }
             .listStyle(PlainListStyle())
             
@@ -48,8 +54,9 @@ struct ToDoListView: View {
                     .cornerRadius(10)
                 
                 Button(action: {
-                    toDoListViewModel.addTask(TaskModel(title: textFieldText, isCompleted: false))
-                    textFieldText = ""
+                    let taskDate = Calendar.current.startOfDay(for: selectedDate)
+                    let newTask = TaskModel(title: textFieldText, isCompleted: false, date: taskDate)
+                    toDoListViewModel.addTask(newTask, for: taskDate)
                 }, label: {
                     Text("Add")
                         .foregroundColor(.white)
@@ -60,19 +67,20 @@ struct ToDoListView: View {
                 })
             }
             
-                
+            
         }
         .foregroundColor(Color.white)
         .navigationBarItems(trailing: EditButton())
         .padding()
         .background(backColor)
         .colorScheme(.dark)
-    }
+        }
+        
 }
 
 #Preview {
     NavigationView {
-        ToDoListView()
+        //ToDoListView(Date())
     }
     .environmentObject(ToDoListViewModel())
 }

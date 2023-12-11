@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WeatherView: View {
     var weather :ResponseBody
+    @EnvironmentObject var dayViewModel: DayViewModel
 
     var body: some View {
             ZStack(alignment: .leading) {
@@ -17,7 +18,7 @@ struct WeatherView: View {
                         Text(weather.name)
                             .bold().font(.title)
                         
-                        Text("Today, \(Date().formatted(.dateTime.month().day().hour().minute()))")
+                        Text("Weather for \(dayViewModel.selectedDate.formatted(.dateTime.month().day().hour().minute()))")
                             .fontWeight(.light)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -67,7 +68,7 @@ struct WeatherView: View {
                     Spacer()
                 
                     VStack(alignment: .leading, spacing: 20) {
-                        Text("Weather now").bold()
+                        Text("Weather ").bold()
                             .padding((.bottom))
                         HStack {
                             WeatherRow(logo: "thermometer.low", name: "Min temp",
