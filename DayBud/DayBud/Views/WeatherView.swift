@@ -9,7 +9,23 @@ import SwiftUI
 
 struct WeatherView: View {
     var weather :ResponseBody
-    @EnvironmentObject var dayViewModel: DayViewModel
+
+    // Helper function to determine the weather icon based on feelsLikeTemperature
+    private func determineWeatherIcon() -> String {
+        switch weather.main.feels_like {
+        case ..<0:
+            return "thermometer.snowflake"
+        case 0..<10:
+            return "thermometer.low"
+        case 10..<20:
+            return "thermometer.medium"
+        case 20..<30:
+            return "thermometer.high"
+        default:
+            return "sun.max"
+        }
+    }
+
 
     var body: some View {
             ZStack(alignment: .leading) {
@@ -17,19 +33,23 @@ struct WeatherView: View {
                     VStack(alignment: .leading, spacing: 5) {
                         Text(weather.name)
                             .bold().font(.title)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Make the text take the full width and align it to the leading edge
+                            .multilineTextAlignment(.leading)
                         
-                        Text("Weather for \(dayViewModel.selectedDate.formatted(.dateTime.month().day().hour().minute()))")
+                        Text("\(Date().formatted(.dateTime.month().day().hour().minute()))")
                             .fontWeight(.light)
+                            .multilineTextAlignment(.leading) // Align the text to the leading edge
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
+
                     
                     Spacer()
                     
                     VStack {
                         HStack {
                             VStack (spacing: 20){
-                                Image(systemName: "sun.max")
-                                    .font(.system(size: 40))
+                                Image(systemName: determineWeatherIcon())
+                                                .font(.system(size: 40))
                                 
                                 Text(weather.weather[0].main)
                             }
@@ -37,7 +57,7 @@ struct WeatherView: View {
                             
                             Spacer()
                             
-                            Text(weather.main.feelsLike.roundDouble() + "°")
+                            Text(weather.main.temp.roundDouble() + "°")
                                 .font(.system(size: 100))
                                 .fontWeight(.bold)
                                 .padding()
@@ -46,15 +66,11 @@ struct WeatherView: View {
                         Spacer()
                             .frame(height: 40)
                         
-                        AsyncImage(url: URL(string: "https://cdn.pixabay.com/photo/2018/03/02/17/19/paris-3193674_1280.jpg")) {
-                            image in image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 350)
-                            
-                        } placeholder: {
-                            ProgressView()
-                        }
+                        Image("rapidcity")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 400)
+
                         
                         Spacer()
                     }
@@ -68,20 +84,24 @@ struct WeatherView: View {
                     Spacer()
                 
                     VStack(alignment: .leading, spacing: 20) {
-                        Text("Weather ").bold()
-                            .padding((.bottom))
+                        Text("Weather now").bold()
+                                                    .padding((.bottom))
+                        
                         HStack {
                             WeatherRow(logo: "thermometer.low", name: "Min temp",
                                        value: (weather.main.tempMin.roundDouble() + "°"))
+                            .padding(.leading, 20)
                             
                             Spacer()
                             WeatherRow(logo: "thermometer.low", name: "Max temp",
                                        value: (weather.main.tempMax.roundDouble() + "°"))
                             .padding(.trailing, 20)
                         }
+                        
                         HStack {
                             WeatherRow(logo: "wind", name: "Wind Speed",
                                        value: (weather.wind.speed.roundDouble() + "m/s"))
+                            .padding(.leading, 20)
                             
                             Spacer()
                             WeatherRow(logo: "humidity", name: "Humidity",
