@@ -127,3 +127,4 @@ struct WeatherView: View {
 #Preview {
     WeatherView(weather: previewWeather)
 }
+

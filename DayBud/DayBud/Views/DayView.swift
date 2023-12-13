@@ -3,6 +3,9 @@ import UIKit
 
 struct DayView: View {
     @EnvironmentObject var dayViewModel: DayViewModel
+    @StateObject var locationManager = LocationManager()
+    var weatherManager = WeatherManager()
+    @State var weather: ResponseBody?
     
     @State private var updateTrigger = false
     let backColor = Color(
@@ -28,6 +31,7 @@ struct DayView: View {
                 .datePickerStyle(GraphicalDatePickerStyle())
                 .padding()
                 .colorScheme(.dark)
+
             
             
             NavigationLink(destination: ToDoListView(selectedDate: $dayViewModel.selectedDate).environmentObject(dayViewModel.toDoList)) {
@@ -63,6 +67,8 @@ struct DayView: View {
                         .font(.headline)
                     Image(systemName: "sun.max.fill")
                         .foregroundColor(.orange).scaledToFill()
+                    
+                    
                 }
                 .padding()
                 .frame(width: 300, height: 100)
