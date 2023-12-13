@@ -23,11 +23,12 @@ struct ToDoRowView: View {
     }
 }
 
+
 #Preview {
     Group {
-        ToDoRowView(task: TaskModel(title: "Test", isCompleted: false))
-        ToDoRowView(task: TaskModel(title: "Test 2", isCompleted: false))
-        ToDoRowView(task: TaskModel(title: "Test 3", isCompleted: true))
+        ToDoRowView(task: TaskModel(title: "Test", isCompleted: false, date: Date()))
+        ToDoRowView(task: TaskModel(title: "Test 2", isCompleted: false, date: Date()))
+        ToDoRowView(task: TaskModel(title: "Test 3", isCompleted: true, date: Date()))
 
     }
     .previewLayout(.sizeThatFits)

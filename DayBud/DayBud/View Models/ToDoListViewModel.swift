@@ -8,34 +8,52 @@
 import Foundation
 
 class ToDoListViewModel: ObservableObject {
-    @Published var tasks: [TaskModel] = []
+    static let shared = ToDoListViewModel()
+    @Published var tasksByDate: [Date: [TaskModel]] = [:]
     
     init() {
-        initTasks()
+        print("Init todolistview")
+        setupDefaultTasksForNextSixMonths(startingFrom: Date())
     }
     
-    func initTasks() {
-        let newTasks = [
-            TaskModel(title: "Task 1", isCompleted: false),
-            TaskModel(title: "Task 2", isCompleted: true),
-            TaskModel(title: "Task 3", isCompleted: false),
-        ]
-        tasks.append(contentsOf: newTasks)
-    }
-    
-    func deleteTask(indexSet: IndexSet) {
-        tasks.remove(atOffsets: indexSet)
-    }
-    
-    func moveTask(from: IndexSet, to: Int) {
-        tasks.move(fromOffsets: from, toOffset: to)
-    }
-    
-    func addTask(_ task: TaskModel){
-        if(task.title == "") {
-            return
+    private func setupDefaultTasksForNextSixMonths(startingFrom date: Date) {
+            let calendar = Calendar.current
+            let startDate = calendar.startOfDay(for: date)
+
+            for dayOffset in 0..<183 { // Approximately six months
+                if let date = calendar.date(byAdding: .day, value: dayOffset, to: startDate) {
+                    tasksByDate[date] = defaultTasksForDate(date)
+                }
+            }
         }
-        tasks.append(task)
+    
+    private func defaultTasksForDate(_ date: Date) -> [TaskModel] {
+        // Example default tasks
+        let task1 = TaskModel(title: "Check emails", isCompleted: false, date: date)
+        let task2 = TaskModel(title: "Daily standup meeting", isCompleted: false, date: date)
+        let task3 = TaskModel(title: "Review project progress", isCompleted: false, date: date)
+
+        return [task1, task2, task3]
+    }
+    
+    func addTask(_ task: TaskModel, for date: Date){
+        let startOfDay = Calendar.current.startOfDay(for: date)
+        tasksByDate[startOfDay]?.append(task)
+    }
+    
+    func tasksForDate(_ date: Date) -> [TaskModel] {
+        let startOfDate = Calendar.current.startOfDay(for: date)
+        return tasksByDate[startOfDate] ?? []
+    }
+    
+    func deleteTask(date: Date, indexSet: IndexSet) {
+        let startOfDay = Calendar.current.startOfDay(for: date)
+        tasksByDate[startOfDay]?.remove(atOffsets: indexSet)
+    }
+    
+    func moveTask(date: Date, form source: IndexSet, to destination: Int) {
+        let startOfDay = Calendar.current.startOfDay(for: date)
+        tasksByDate[startOfDay]?.move(fromOffsets: source, toOffset: destination)
     }
     
     func toggleTaskCompleted(_ task: TaskModel) {
